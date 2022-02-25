@@ -1,5 +1,7 @@
 from handtracking import handDetector
 from poseEstimation import poseDetector
+from faceDetection import faceDetector
+from faceMesh import faceMeshDetector
 import cv2 as cv
 import sys
 
@@ -7,9 +9,14 @@ import sys
 def main():
     args = sys.argv[1:]
     if args[0] == "ht":
-        handDetector.displayTracking();
+        handDetector.displayTracking()
     elif args[0] == "pe":
-        poseDetector.displayPoseEstimation(); 
+        poseDetector.displayPoseEstimation()
+    elif args[0] == "fd":
+        faceDetector.displayFaceDetection()
+    elif args[0] == "fm":
+        faceMeshDetector.displayFaceMesh()
+        
         
     cv.destroyAllWindows()
     

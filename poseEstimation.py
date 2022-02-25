@@ -19,6 +19,8 @@ class poseDetector():
         
         
     def findPoseEstimation(self, img, draw = True):
+        #to improve performace set img as not writeable
+        img.flags.writeable = False
         imgRGB = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
         
@@ -28,6 +30,7 @@ class poseDetector():
     
     def findPositions(self, img, draw = True):
         lmList = []
+        img.flags.writeable = True
         if self.results.pose_landmarks:
             for id, lm in enumerate(self.results.pose_landmarks.landmark):
                 h, w, c = img.shape
@@ -57,6 +60,7 @@ class poseDetector():
                 cv.imshow("Image", img)
                 k = cv.waitKey(1) & 0xFF
                 if k == 27:
+                    cap.release()
                     break
             else:
                 print("No VideoCapture Detected :C")
