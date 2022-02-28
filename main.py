@@ -2,6 +2,7 @@ from handtracking import handDetector
 from poseEstimation import poseDetector
 from faceDetection import faceDetector
 from faceMesh import faceMeshDetector
+from holistic import holisticDetector
 import cv2 as cv
 import sys
 
@@ -16,6 +17,8 @@ def main():
         faceDetector.displayFaceDetection()
     elif args[0] == "fm":
         faceMeshDetector.displayFaceMesh()
+    elif args[0] == 'hol':
+        holisticDetector.displayHolistics()
         
         
     cv.destroyAllWindows()
